@@ -15,7 +15,7 @@
 5 
 ```java
 root ALL=(ALL) ALL
-  bing ALL=(ALL) ALL 
+bing ALL=(ALL) ALL 
 ```
 6 chmod -v u-w /etc/sudoers
 
@@ -23,7 +23,9 @@ root ALL=(ALL) ALL
 
 
 ### install docker in centos 7
-1 sudo yum remove docker \
+1 
+```java
+sudo yum remove docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -31,14 +33,21 @@ root ALL=(ALL) ALL
                   docker-latest-logrotate \
                   docker-logrotate \
                   docker-engine
-                  
-2 sudo yum install -y yum-utils \
+```
+
+2 
+```java
+sudo yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
-  
-3 sudo yum-config-manager \
+```
+
+3 
+```java
+sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
+```
 
 4 sudo yum install docker-ce docker-ce-cli containerd.io
 
@@ -87,6 +96,7 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 5 kubectl apply -f kube-flannel.yml
 
 6 join worker
+
 kubeadm join 172.31.63.236:6443 --token r4iccp.0bikb7szse309o6d \
     --discovery-token-ca-cert-hash sha256:ab72ad8fb2aa9e999522c401ee3bdd543555813515230b932b0c8bf3e8d31689
     
