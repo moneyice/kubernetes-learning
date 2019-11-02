@@ -1,27 +1,28 @@
-# kubernetes-learning
+#kubernetes-learning
 
-kubernetes cluster Setup scenario
+##kubernetes cluster Setup scenario
 
-==============
-add user
+###Add user
 
-1 adduser bing
-2 passwd bing
-3 chmod -v u+w /etc/sudoers
-4 vim /etc/sudoers
-5 root ALL=(ALL) ALL
-bing ALL=(ALL) ALL 
+1 adduser bing <br>
 
-6 chmod -v u-w /etc/sudoers
-7 su bing
+2 passwd bing <br>
 
-===================================
+3 chmod -v u+w /etc/sudoers <br>
+
+4 vim /etc/sudoers <br>
+
+5 <br> 
+```java
+root ALL=(ALL) ALL
+  bing ALL=(ALL) ALL 
+``` <br>
+6 chmod -v u-w /etc/sudoers <br>
+
+7 su bing <br>
 
 
-
-
-===================================
-install docker in centos 7
+###install docker in centos 7
 1 sudo yum remove docker \
                   docker-client \
                   docker-client-latest \
@@ -30,24 +31,25 @@ install docker in centos 7
                   docker-latest-logrotate \
                   docker-logrotate \
                   docker-engine
-
+<br>
 2 sudo yum install -y yum-utils \
   device-mapper-persistent-data \
-  lvm2
+  lvm2<br>
 3 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
+<br>
+4 sudo yum install docker-ce docker-ce-cli containerd.io<br>
+5 sudo systemctl enable docker<br>
+6 sudo systemctl start docker<br>
+7 sudo docker run hello-world<br>
 
-4 sudo yum install docker-ce docker-ce-cli containerd.io
-5 sudo systemctl enable docker
-6 sudo systemctl start docker
-7 sudo docker run hello-world
-===========================================
 
 
-============================================
-install k8s
+
+###install k8s
 1
+```java
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -65,7 +67,8 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl enable --now kubelet
-
+```
+<br>
 
 2 creat master
 kubeadm init --apiserver-advertise-address master-ip --pod-network-cidr=10.224.0.0/16
