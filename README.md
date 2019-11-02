@@ -22,7 +22,7 @@ bing ALL=(ALL) ALL
 7 su bing
 
 
-### install docker in centos 7
+### Install docker in centos 7
 1 
 ```java
 sudo yum remove docker \
